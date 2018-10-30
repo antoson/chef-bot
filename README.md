@@ -22,6 +22,8 @@ Cílem tohoto dokumentu je shrnout a specifikovat požadavky a funkce služby ch
 
 ### Diagram užití
 ![Diagram užití](use_case.png)
+### Vývojový diagram
+![Vývojový diagram](flowchart.png)
 
 ### Technické požadavky na uživatele
 * Koncový uživatel potřebuje k přístupu ke službě zařízení s operačními systémy:
