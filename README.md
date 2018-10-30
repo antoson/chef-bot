@@ -20,6 +20,9 @@ Cílem tohoto dokumentu je shrnout a specifikovat požadavky a funkce služby ch
 * Uživatel může zažádat o konkrétní recept
 * Služba bude poskytována pouze v anglickém jazyce
 
+### Diagram užití
+![Diagram užití](use_case.png)
+
 ### Technické požadavky na uživatele
 * Koncový uživatel potřebuje k přístupu ke službě zařízení s operačními systémy:
     * Windows (7 nebo vyšší)
