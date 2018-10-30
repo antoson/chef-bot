@@ -9,11 +9,25 @@
 Cílem tohoto dokumentu je shrnout a specifikovat požadavky a funkce služby chef-bot. Vymezuje potřeby zúčastněných stran a cílových uživatelů.
 
 ## Funkční specifikace
-* Cílem je vytvořit program, který se napojuje na komunikační platformu Discord a na základě vstupu od uživatele bude vracet recepty jídel
+* Cílem je vytvořit službu, která se napojuje na komunikační platformu [Discord](https://discordapp.com/)
+    * Discord je alternativa ke [Skype](https://www.skype.com/) a [Teamspeak](https://www.teamspeak.com/) (aplikace pro hlasovou komunikaci)
+* Na základě vstupu od uživatele bude vracet recepty jídel
 * Vstupem bude seznam ingrediencí, které má uživatel dostupné
-* Výstupem bude recept (pokud bude více receptů vyhovovat uživatelskému vstupu, tak program náhodně vylosuje jeden)
+    * ingredience budou uživatelé zadávat odděleně čárkou nebo mezerou
+* Výstupem bude recept
+    * pokud bude více receptů vyhovovat uživatelskému vstupu, tak program náhodně vylosuje jeden
 * Uživatel také může zažádat o zcela náhodný recept bez toho, aniž by zadal ingredience.
 * Uživatel může zažádat o konkrétní recept
+* Služba bude poskytována pouze v anglickém jazyce
+
+### Technické požadavky na uživatele
+* Koncový uživatel potřebuje k přístupu ke službě zařízení s operačními systémy:
+    * Windows (7 nebo vyšší)
+    * Linux
+    * macOS
+    * Android
+    * iOS
+* Discord je dostupný jak ve verzi webové aplikace, kde uživatel potřebuje pouze prohlížeč a nebo také jako desktopová či mobilní aplikace
 
 ## Technická specifikace
 ### Datový model
@@ -23,13 +37,15 @@ Cílem tohoto dokumentu je shrnout a specifikovat požadavky a funkce služby ch
 
 <img src="schema.png" alt="Schéma databáze" height="480" />
 
-### Vývoj
-* Programování bota pomocí knihovny Discord.js pro interakci s Discord API.
-* Server s Node.js, poskytující API databáze receptů.
+### Technické požadavky pro vývoj
+* Aplikace Discord
+* Discord.js knihovna pro interakci s Discord API.
+* Server s Node.js, poskytující rozhraní API k databázi receptů.
 * DevOps pomocí GitHub a Trello.
+* Relační databáze
 
-### Použité technologie
-* Discord
-* Discord.js
-* node.js
-* MySQL
+### Použité technologie, licence
+* Discord ([Proprietární freeware](https://discordapp.com/licenses))
+* Discord.js ([Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0))
+* node.js ([MIT License](https://opensource.org/licenses/MIT))
+* MySQL ([GNU GPL](https://www.gnu.org/licenses/gpl.html))
