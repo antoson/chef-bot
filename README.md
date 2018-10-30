@@ -1,21 +1,23 @@
 # chef-bot
-**Discord Bot poskytující recepty na základě zadaných ingrediencí**
+**chef-bot poskytuje recepty**
 
 <img src="https://discordapp.com/assets/e4923594e694a21542a489471ecffa50.svg"  height="70" /> 
 <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" height="70" /> 
 <img src="https://discord.js.org/static/logo.svg" height="70" />
 
 ## Úvod
-Cílem tohoto dokumentu je shrnout a specifikovat požadavky a funkce služby chef-bot. Vymezuje potřeby zúčastněných stran a cílových uživatelů.
+Cílem tohoto dokumentu je shrnout a specifikovat požadavky a funkce služby chef-bot.\
+Vymezuje potřeby zúčastněných stran a cílových uživatelů.
 
 ## Funkční specifikace
 * Cílem je vytvořit službu, která se napojuje na komunikační platformu [Discord](https://discordapp.com/)
     * Discord je alternativa ke [Skype](https://www.skype.com/) a [Teamspeak](https://www.teamspeak.com/) (aplikace pro hlasovou komunikaci)
 * Na základě vstupu od uživatele bude vracet recepty jídel
 * Vstupem bude seznam ingrediencí, které má uživatel dostupné
-    * ingredience budou uživatelé zadávat odděleně čárkou nebo mezerou
+    * ingredience musí uživatelé zadávat odděleně čárkou nebo mezerou
 * Výstupem bude recept
     * pokud bude více receptů vyhovovat uživatelskému vstupu, tak program náhodně vylosuje jeden
+* Při neplatném vstupu bude uživatel službou informován o neplatném vstupu
 * Uživatel také může zažádat o zcela náhodný recept bez toho, aniž by zadal ingredience.
 * Uživatel může zažádat o konkrétní recept
 * Služba bude poskytována pouze v anglickém jazyce
