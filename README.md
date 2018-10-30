@@ -5,6 +5,9 @@
 <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" height="70" /> 
 <img src="https://discord.js.org/static/logo.svg" height="70" />
 
+## Úvod
+Cílem tohoto dokumentu je shrnout a specifikovat požadavky a funkce služby chef-bot. Vymezuje potřeby zúčastněných stran a cílových uživatelů.
+
 ## Funkční specifikace
 * Cílem je vytvořit program, který se napojuje na komunikační platformu Discord a na základě vstupu od uživatele bude vracet recepty jídel
 * Vstupem bude seznam ingrediencí, které má uživatel dostupné
@@ -20,7 +23,13 @@
 
 <img src="schema.png" alt="Schéma databáze" height="480" />
 
-### Vývoj 
+### Vývoj
 * Programování bota pomocí knihovny Discord.js pro interakci s Discord API.
 * Server s Node.js, poskytující API databáze receptů.
 * DevOps pomocí GitHub a Trello.
+
+### Použité technologie
+* Discord
+* Discord.js
+* node.js
+* MySQL
