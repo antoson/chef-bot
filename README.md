@@ -32,9 +32,9 @@ Tato služba je pouze dostupná pro registrované uživatele platformy Discord.
 * Služba bude poskytována pouze v anglickém jazyce
 
 ### Diagram užití
-![Diagram užití](use_case.png)
+![Diagram užití](./media/use_case.png)
 ### Vývojový diagram
-![Vývojový diagram](flowchart.png)
+![Vývojový diagram](./media/flowchart.png)
 
 ### Technické požadavky na uživatele
 * Koncový uživatel potřebuje k přístupu ke službě zařízení s operačními systémy:
@@ -51,7 +51,7 @@ Tato služba je pouze dostupná pro registrované uživatele platformy Discord.
 * Produkční databáze bude na hostingu nebo Azure.
 * Přidávání receptů bude probíhat přes REST API databáze.
 
-<img src="schema.png" alt="Schéma databáze" height="480" />
+<img src="./media/schema.png" alt="Schéma databáze" height="480" />
 
 ### Technické požadavky pro vývoj
 * Aplikace Discord
