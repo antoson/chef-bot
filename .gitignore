@@ -1,0 +1,22 @@
+# Discord bot config (secret!)
+botconfig.json
+
+# node_modules
+# Run 'npm install' where package.json is located
+# to rebuild node_modules on another machine.
+node_modules/*
+
+# VScode stuffs
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Logs, environments
+*.log
+.env
+
+# System Files
+.DS_Store
+Thumbs.db
