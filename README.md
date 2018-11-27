@@ -5,6 +5,12 @@
 <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" height="70" /> 
 <img src="https://discord.js.org/static/logo.svg" height="70" />
 
+## Tabulka změn
+|Datum|Změny|
+|---|---|
+|30.10.2018|Vypsána první verze dokumentace|
+|10.11.2018|Doplněna cílová skupina. Upřesnění role a chování programu v cílové platformě. Doplněny příklady vstupů.|
+
 ## Úvod
 Cílem tohoto dokumentu je shrnout a specifikovat požadavky a funkce služby chef-bot.\
 Vymezuje potřeby zúčastněných stran a cílových uživatelů.
