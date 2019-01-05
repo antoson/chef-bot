@@ -1,26 +1,18 @@
 const { token } = require('./botconfig.json');
-const Discord = require('discord.js');
-const client = new Discord.Client({disableEveryone: true});
+const { id, key } = require('./apiconfig.json');
+const fetch = require('node-fetch');
+const { Client, RichEmbed } = require('discord.js');
+const client = new Client();
 const prefix = "!";
 
-// https://api.edamam.com/search?app_id=453689ec&app_key=8aedd818b6528b232778a200cd2e6334&q=neco+necojinyho
-const recapi = "https://api.edamam.com/search?app_id=453689ec";
-const recapikey = "&app_key=8aedd818b6528b232778a200cd2e6334&to=1";
+const recapi = "https://api.edamam.com/search?app_id="+id;
+const recapikey = "&app_key="+key+"&to=1";
 
-//Request Api
-
-async function getRecipe(url) {
-    let edamanResponse = await fetch(url);
-    let response = await edamanResponse.json();
-
-    return res = response.hits[0].recipe.url;
-};
-
-//Client
+// Client
 client.on("ready", async () => {
     console.log(`${client.user.username} is online!`);
 })
-
+// On message:
 client.on("message", async message => {
     if(message.author.bot) return;
     if(message.channel.type === "dm") return;
@@ -30,15 +22,26 @@ client.on("message", async message => {
     let args = messageArray.slice(1);
     let ingredients = args.join('+');
     let url = recapi+recapikey+"&q="+ingredients;
-    let result = getRecipe(url);
 
-    // !say xyz => xyz
+    // !info help command
     if(cmd === `${prefix}info`){
-        return message.channel.send(`I'm running inside a Docker container!`);
+        return message.channel.send(`Use "!recipe ingredient1 ingredient2 ingredientN" to query a recipe by ingredients. A link to the recipe will be provided, if it is found.`);
     }
+    // !recipe command
+    if (cmd === `${prefix}recipe`) {
 
-    if(cmd === `${prefix}recipe`){
-        return message.channel.send(`Your recipe: `);
+        const response = await fetch(url);
+        const json = await response.json();
+
+        if ( json.count > 0 ) {
+            const embed = new RichEmbed()
+                .setTitle(json.hits[0].recipe.label)
+                .setURL(json.hits[0].recipe.url)
+                .setImage(json.hits[0].recipe.image);
+
+            return message.channel.send(embed);
+        }
+        else return message.channel.send(`Recipe not found. Please try another set of ingredients.`);
     }
 })
 

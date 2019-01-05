@@ -1,5 +1,6 @@
 # Discord bot config (secret!)
 botconfig.json
+apiconfig.json
 
 # node_modules
 # Run 'npm install' where package.json is located

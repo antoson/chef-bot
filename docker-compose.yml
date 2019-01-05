@@ -4,8 +4,3 @@ services:
     container_name: chefbot
     restart: always
     build: .
-  mongo:
-    container_name: mongol
-    image: mongo
-    ports:
-     - "27017:27017"
