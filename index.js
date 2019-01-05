@@ -1,47 +1,46 @@
-const botconfig = require("./botconfig.json");
-const Discord = require("discord.js");
-const insults = require("./insults.json");
-const bot = new Discord.Client({disableEveryone: true});
+const { token } = require('./botconfig.json');
+const Discord = require('discord.js');
+const client = new Discord.Client({disableEveryone: true});
+const prefix = "!";
 
-bot.on("ready", async () => {
-    console.log(`${bot.user.username} is online!`);
+// https://api.edamam.com/search?app_id=453689ec&app_key=8aedd818b6528b232778a200cd2e6334&q=neco+necojinyho
+const recapi = "https://api.edamam.com/search?app_id=453689ec";
+const recapikey = "&app_key=8aedd818b6528b232778a200cd2e6334&to=1";
+
+//Request Api
+
+async function getRecipe(url) {
+    let edamanResponse = await fetch(url);
+    let response = await edamanResponse.json();
+
+    return res = response.hits[0].recipe.url;
+};
+
+//Client
+client.on("ready", async () => {
+    console.log(`${client.user.username} is online!`);
 })
 
-bot.on("message", async message => {
+client.on("message", async message => {
     if(message.author.bot) return;
     if(message.channel.type === "dm") return;
 
-    let prefix = botconfig.prefix;
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
     let args = messageArray.slice(1);
+    let ingredients = args.join('+');
+    let url = recapi+recapikey+"&q="+ingredients;
+    let result = getRecipe(url);
 
     // !say xyz => xyz
-    if(cmd === `${prefix}say`){
-        return message.channel.send(`${args}!`);
+    if(cmd === `${prefix}info`){
+        return message.channel.send(`I'm running inside a Docker container!`);
     }
-    // !bing => bong!
-    if(cmd === `${prefix}bing`){
-        return message.channel.send("bong!");
+
+    if(cmd === `${prefix}recipe`){
+        return message.channel.send(`Your recipe: `);
     }
-    // !embed => {embed}
-    if(cmd === `${prefix}embed`){
-        message.channel.send({embed: {
-            color: 3447003,
-            description: "A very simple Embed!"
-          }});    }
-    // !insult => {random insult from insults.json}
-    if(cmd === `${prefix}insult`){
-        num = getRandomIntInclusive(0,9);
-        return message.channel.send(insults[num], {tts: true});
-    }
-    
 })
-// get random int between min, max (inclusive)
-function getRandomIntInclusive(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+
 // Login bot with secret token
-bot.login(botconfig.token);
+client.login(token);
