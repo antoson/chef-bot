@@ -17,6 +17,7 @@ client.on("message", async message => {
     if(message.author.bot) return;
     if(message.channel.type === "dm") return;
 
+    // Manipulate message content
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
     let args = messageArray.slice(1);
@@ -53,6 +54,10 @@ client.on("message", async message => {
         }
         else
             return message.channel.send(`Recipe not found. Please try another set of ingredients.`);
+    }
+    // text-to-speech command
+    if (cmd === `${prefix}tts`) {
+        return message.channel.send(`${args.join(' ')}`, {tts: true});
     }
 })
 
