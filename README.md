@@ -10,6 +10,8 @@
 |---|---|
 |30.10.2018|Vypsána první verze dokumentace|
 |10.11.2018|Doplněna cílová skupina. Upřesnění role a chování programu v cílové platformě. Doplněny příklady vstupů.|
+|23.12.2018|Kontejnerizace aplikace pomocí aplikace Docker|
+|5.1.2019|Změněn způsob získávání dat - využita již existující databáze receptů|
 
 ## Úvod
 Cílem tohoto dokumentu je shrnout a specifikovat požadavky a funkce služby chef-bot.\
@@ -26,15 +28,19 @@ Tato služba je pouze dostupná pro registrované uživatele platformy Discord.
     * Na platformě Discord je bot schopen krom odpovídání ještě využívat další funkcionality, např. přiřazování rolí a úprava oprávnění pro skupinu či jednotlivce (pokud má oprávnění od správce serveru)
 * Uživatel si může bota do svého serveru (nebo na cizím, pokud má daný uživatel dostatečná oprávnění) pozvat pomocí odkazu, který dodá vývojář (nebo na webové stránce pro projekt, pokud existuje)
 * Na základě vstupu od uživatele bude vracet recepty jídel
-* Vstupem bude seznam ingrediencí, které má uživatel dostupné
-    * ingredience musí uživatelé zadávat odděleně čárkou nebo mezerou
-    * příklad: "!search ingredience1 ingredience2 ...indredienceN", "!search random", "!search konkretniRecept"
+* Příkazem !info dostane uživatel nápovědu k použití služby
+* Vstupem bude seznam ingrediencí, které uživatel vypíše
+    * ingredience musí uživatelé zadávat oddělené mezerou
+    * příklad: "!recipe ingredience1 ingredience2 indredienceN".
 * Výstupem bude recept
-    * pokud bude více receptů vyhovovat uživatelskému vstupu, tak program náhodně vylosuje jeden
-* Při neplatném vstupu bude uživatel službou informován o neplatném vstupu
-    * příklad: "!search neexistujiciIngredience", "!search ingredience1. ingredience2", "!searchingredience1"
-* Uživatel také může zažádat o zcela náhodný recept bez toho, aniž by zadal ingredience.
-* Uživatel může zažádat o konkrétní recept
+    * pokud bude více receptů vyhovovat uživatelskému vstupu, tak služba náhodně vylosuje jeden recept z maximálně pěti dostupných.
+    * Recept bude poslán ve zprávě botem a bude obsahovat:
+        * Název receptu
+        * Odkaz na recept        
+        * Výpis ingrediencí
+        * Obrázek 
+* Při neplatném vstupu bude uživatel službou informován.
+    * příklad: "!recipe neexistujiciIngredience"
 * Služba bude poskytována pouze v anglickém jazyce
 
 ### Diagram užití
@@ -52,22 +58,22 @@ Tato služba je pouze dostupná pro registrované uživatele platformy Discord.
 * Discord je dostupný jak ve verzi webové aplikace, kde uživatel potřebuje pouze prohlížeč a nebo také jako desktopová či mobilní aplikace
 
 ## Technická specifikace
-### Datový model
-* Testovaní bude probíhat na lokální databázi.
-* Produkční databáze bude na hostingu nebo Azure.
-* Přidávání receptů bude probíhat přes REST API databáze.
-
-<img src="./media/schema.png" alt="Schéma databáze" height="480" />
+### Zdroj receptů
+* Jakožto databáze receptů je využita již existující služba [edamam](https://www.edamam.com/).
 
 ### Technické požadavky pro vývoj
 * Aplikace Discord
 * Discord.js knihovna pro interakci s Discord API.
 * Server s Node.js, poskytující rozhraní API k databázi receptů.
 * DevOps pomocí GitHub a Trello.
-* Relační databáze
 
 ### Použité technologie, licence
 * Discord ([Proprietární freeware](https://discordapp.com/licenses))
 * Discord.js ([Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0))
 * node.js ([MIT License](https://opensource.org/licenses/MIT))
-* MySQL ([GNU GPL](https://www.gnu.org/licenses/gpl.html))
+* Docker ([Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0), [GNU GPL](https://www.gnu.org/licenses/gpl.html))
+
+## Disclaimer
+* Autoři negarantují neptřetržitý provoz služby chef-bot
+* Autoři se zříkají jakékoliv právní zodpovědnosti spojené s použiváním služby chef-bot
+* Autoři negarantují esteticky příjemné obrázky
