@@ -4,6 +4,7 @@
 <img src="https://discordapp.com/assets/e4923594e694a21542a489471ecffa50.svg"  height="70" /> 
 <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" height="70" /> 
 <img src="https://discord.js.org/static/logo.svg" height="70" />
+<img src="https://cdn.freebiesupply.com/logos/large/2x/docker-logo-png-transparent.png" height="70">
 
 ## Tabulka změn
 |Datum|Změny|
@@ -44,7 +45,7 @@ Tato služba je pouze dostupná pro registrované uživatele platformy Discord.
 * Služba bude poskytována pouze v anglickém jazyce
 
 ### Diagram užití
-![Diagram užití](./media/use_case.png)
+![Diagram užití](./media/use_case_diagram.png)
 ### Vývojový diagram
 ![Vývojový diagram](./media/flowchart.png)
 
